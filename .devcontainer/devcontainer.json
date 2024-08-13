@@ -1,0 +1,21 @@
+{
+    "name": "graphragdevcontainer",
+    "dockerFile": "Dockerfile",
+    "context": "..",
+    "settings": {
+        "python.pythonPath": "/usr/local/bin/python"
+    },
+    "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers"
+    ],
+    "postCreateCommand": "pip install -r requirements.txt",
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+      ]
+}

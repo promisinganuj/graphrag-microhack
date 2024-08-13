@@ -1,0 +1,6 @@
+graphrag==0.2.2
+pyspark==3.5.1
+pyarrow==15.0.0
+pandas==2.2.2
+ipykernel==6.29.5
+yfiles_jupyter_graphs==1.7.3
