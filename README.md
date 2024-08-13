@@ -93,25 +93,33 @@ If you don't want to run the indexing process, please move to the next section t
 
 ### Understanding the output files
 
-The output of the indexing process is stored in the `./sample/output/<timestamp>/artifacts` directory. For reference, we have provided a sample output in the [sample-output](./sample-output/output/20240812-141408/artifacts/) directory. Here is a brief overview of the output files:
+The output of the indexing process is stored in the `./sample/output/<timestamp>/artifacts` directory. For reference, we have provided a sample output in the [sample-output](./sample-output/output/20240812-215728/artifacts/) directory. Here is a brief overview of the output files:
 
 ```bash
+create_base_documents.parquet               -
 create_base_text_units.parquet              -
 create_base_extracted_entities.parquet      -
-create_summarized_entities.parquet          -
 create_base_entity_graph.parquet            -
+create_final_communities.parquet            -
+create_final_community_reports.parquet      -
+create_summarized_entities.parquet          -
 create_final_entities.parquet               -
 create_final_nodes.parquet                  -
-create_final_communities.parquet            -
-join_text_units_to_entity_ids.parquet       -
+create_final_covariates.parquet             
 create_final_relationships.parquet          -
-join_text_units_to_relationship_ids.parquet -
-create_final_community_reports.parquet      -
 create_final_text_units.parquet             -
-create_base_documents.parquet               -
 create_final_documents.parquet              -
+join_text_units_to_entity_ids.parquet       -
+join_text_units_to_relationship_ids.parquet -
+join_text_units_to_covariate_ids.parquet    -
 stats.json                                  -
 ```
+
+Please follow the [understanding-graphrag-output.ipynb](./notebooks/understanding-graphrag-output.ipynb) notebook to understand the content of the output files. The notebook provides step-by-step instructions and code cells to:
+
+- Load the output files as pandas dataframes.
+- Extract graphML data from the output files and saves it as files in [analysis/20240812-215728](./analysis/20240812-215728/) directory.
+- Explain the content and relationship of the output files.
 
 ### Visualizing the Graph
 
