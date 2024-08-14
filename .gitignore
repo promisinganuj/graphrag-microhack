@@ -45,6 +45,8 @@ lancedb/
 .conda
 .tmp
 
+/sample/
+
 
 .env
 build.zip
