@@ -147,7 +147,7 @@ To run a global search, you can use the following command:
 python -m graphrag.query --root ./sample --method global "What are the top themes in this story?"
 ```
 
-For details about the global search, please refer to the [local search documentation](https://microsoft.github.io/graphrag/posts/query/0-global_search/).
+For details about the global search, please refer to the [global search documentation](https://microsoft.github.io/graphrag/posts/query/0-global_search/).
 
 ## Understanding the indexing pipeline output
 
