@@ -12,7 +12,7 @@
         "ms-toolsai.jupyter",
         "ms-toolsai.jupyter-keymap",
         "ms-toolsai.jupyter-renderers",
-        "ms-toolsai.data-wrangler"
+        "ms-toolsai.datawrangler"
     ],
     "postCreateCommand": "pip install -r requirements.txt",
     "workspaceFolder": "/workspace",
