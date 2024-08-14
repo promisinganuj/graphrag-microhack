@@ -26,6 +26,7 @@ If you don't want to run the indexing process, please move to the next section t
 
    - Dev Container Approach:  
    Open the project inside the vscode dev container. For that open the command palette (`Ctrl+Shift+P`) and search for `Dev Containers: Open Folder in Container...`. Select the root folder and confirm.  
+   (note: For MAC users using M1/M2/M3 chip, refer to [troubleshooting](#troubleshooting) section.)
       
    - Virtual environment Approach:  
      - Within vscode terminal, go to the root directory of this repo.     
@@ -172,6 +173,14 @@ Please follow the [global_search.ipynb](./notebooks/global_search.ipynb) noteboo
 Refer to the section
 - Run global search on sample queries
 
+
+## Troubleshooting
+ 
+## Dev Container failing to launch
+The dev container creation might fail for MAC users using M1/M2/M3 chip. This is due to a package dependency which is not resolving in ARM based chips. To resolve this issue:
+Make sure that you have the following setting enabled in Docker desktop:
+
+  ![troubleshooting](./images/troubleshooting.png)
 
 ## References:
 
