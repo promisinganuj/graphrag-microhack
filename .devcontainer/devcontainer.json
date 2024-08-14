@@ -11,7 +11,8 @@
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
         "ms-toolsai.jupyter-keymap",
-        "ms-toolsai.jupyter-renderers"
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.data-wrangler"
     ],
     "postCreateCommand": "pip install -r requirements.txt",
     "workspaceFolder": "/workspace",

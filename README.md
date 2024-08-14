@@ -89,7 +89,31 @@ If you don't want to run the indexing process, please move to the next section t
    ![indexing-process-output-06](./images/sample-run-06.png)
    ![indexing-process-output-07](./images/sample-run-07.png)
 
-## Understanding the output
+## Using the query engine
+
+Once the indexing is complete, you can use the [Query Engine](https://microsoft.github.io/graphrag/posts/query/overview/) to query the knowledge graph. The Query Engine is the retrieval module of the Graph RAG Library.
+
+### Performing local search
+
+To run a local search, you can use the following command:
+
+```bash
+python -m graphrag.query --root ./sample --method local "Who is Scrooge, and what are his main relationships?"
+```
+
+For details about the local search, please refer to the [local search documentation](https://microsoft.github.io/graphrag/posts/query/1-local_search/).
+
+### Performing global search
+
+To run a global search, you can use the following command:
+
+```bash
+python -m graphrag.query --root ./sample --method global "What are the top themes in this story?"
+```
+
+For details about the global search, please refer to the [local search documentation](https://microsoft.github.io/graphrag/posts/query/0-global_search/).
+
+## Understanding the indexing pipeline output
 
 ### Understanding the output files
 
