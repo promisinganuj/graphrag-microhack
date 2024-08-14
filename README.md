@@ -1,20 +1,33 @@
-# Microsoft GraphRAG Microhack
+# Microsoft GraphRAG Microhack <!-- omit in toc -->
+
+## Contents <!-- omit in toc -->
+
+- [Software prerequisites](#software-prerequisites)
+- [GraphRAG initialization and indexation process](#graphrag-initialization-and-indexation-process)
+  - [Steps to follow](#steps-to-follow)
+- [Understanding the output](#understanding-the-output)
+  - [Understanding the output files](#understanding-the-output-files)
+  - [Visualizing the graph](#visualizing-the-graph)
+  - [Local and global search](#local-and-global-search)
+- [References](#references)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
 
 ## Software prerequisites
 
-- [Docker](https://www.docker.com/)
+- Latest version of [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [VSCode](https://code.visualstudio.com/)
 - [Visual Studio Code Remote Development Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
 
 It is strongly recommended to use dev container to avoid python packages dependencies.
 
-## Setting up workspace and running the indexing process
+## GraphRAG initialization and indexation process
 
 If you want to run the indexing process on your local machine to gain a better understanding of how GraphRAG works, you can follow the steps belows. Please note that these steps are well described in the original documentation at https://microsoft.github.io/graphrag/posts/get_started/. However, we have provided a brief overview of the steps below.
 
 If you don't want to run the indexing process, please move to the next section to [understand the output](#understanding-the-output).
 
-### Steps
+### Steps to follow
 
 1. Clone the repo to your local machine (or Download as zip and extract):
 
@@ -22,31 +35,30 @@ If you don't want to run the indexing process, please move to the next section t
    git clone https://github.com/promisinganuj/graphrag-microhack.git
    ```
 
-2. You have 2 options to run this. Either via Dev Containers or within local virtual environment
+1. You have two options for running this: either through Dev Containers or within a local virtual environment.
 
-   - Dev Container Approach:  
-   Open the project inside the vscode dev container. For that open the command palette (`Ctrl+Shift+P`) and search for `Dev Containers: Open Folder in Container...`. Select the root folder and confirm.  
-   (note: For MAC users using M1/M2/M3 chip, refer to [troubleshooting](#troubleshooting) section.)
-      
-   - Virtual environment Approach:  
-     - Within vscode terminal, go to the root directory of this repo.     
-     - Create a virtual environment, activate it and install all necessary libraries
-       ```python
-       # step 1: (Create virtual environment)
-       python -m venv .venv       
+   - __Dev Container approach__:
+     Open the project inside the vscode dev container. For that open the command palette (`Ctrl+Shift+P`) and search for `Dev Containers: Open Folder in Container...`. Select the root folder and confirm.
 
-       # step 2: (Activate virtual environment)
+     ** _If you are using MAC with Apple Silicon chip (M1/M2/M3), please ensure that you have the latest version of Docker Desktop installed to avoid the hard requirement to install Rosetta 2. This dependency is removed from  Docker Desktop 4.3.0 onwards. Check [here](https://docs.docker.com/desktop/install/mac-install/) for more details._
 
-         # in linux/mac environments
-         source .venv/bin/activate  
+   - __Virtual environment approach__:
+     Within vscode terminal, go to the root directory of this repo. Create a virtual environment, activate it and install all necessary libraries
+     ```python
+      # step 1: Create virtual environment
+      python -m venv .venv
 
-         # in Windows
-         .venv\Scripts\activate       
+      # step 2: Activate virtual environment
+        # in linux/mac environments
+        source .venv/bin/activate
+        # in Windows
+        .venv\Scripts\activate
 
-       # step 3: (Install required python libraries)
-       pip install -r requirements.txt    
-       ```
-3. Choose a root directory called `sample` (or anything else), and create an `input` folder within it.
+      # step 3: Install required python libraries
+      pip install -r requirements.txt
+      ```
+
+1. Choose a root directory called `sample` (or anything else), and create an `input` folder within it.
 
    ```bash
    mkdir -p ./sample/input
@@ -54,8 +66,7 @@ If you don't want to run the indexing process, please move to the next section t
 
    This will install the required packages for running the indexing process.
 
-4. For running out the indexation process, you can use any dataset of your choice. We have provided the following dataset in this repo:
-   - [datasets/books/a-christmas-carol.txt](./datasets/books/a-christmas-carol.txt) - A copy of "A Christmas Carol" by Charles Dickens from [Project Gutenburg](https://www.gutenberg.org/cache/epub/24022/pg24022.txt).
+1. For running out the indexation process, you can use any dataset of your choice. As a sample, we have provided a copy of [A Christmas Carol](./datasets/books/a-christmas-carol.txt) by Charles Dickens from [Project Gutenburg](https://www.gutenberg.org). You can use this dataset to run the indexing process.
 
    Copy the `a-christmas-carol.txt` file to the `./sample` directory by using the following command:
 
@@ -63,13 +74,13 @@ If you don't want to run the indexing process, please move to the next section t
    cp ./datasets/books/a-christmas-carol.txt ./sample/input/
    ```
 
-5. Initialize graphrag by running the following command:
+1. Initialize graphrag by running the following command:
 
    ```bash
    python -m graphrag.index --init --root ./sample
    ```
 
-6. Setup workspace variables
+1. Setup workspace variables
 
    This will create two files: .env and settings.yaml in the ./sample directory.
 
@@ -93,7 +104,7 @@ If you don't want to run the indexing process, please move to the next section t
 
    Please follow the [documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/create-resource?pivots=web-portal) for more information on how to set up the Azure OpenAI Service resource and deploy models.
 
-7. Run the Indexing pipeline
+1. Run the Indexing pipeline
 
    ```bash
    python -m graphrag.index --root ./sample
@@ -143,7 +154,7 @@ Please follow the [understanding-graphrag-output.ipynb](./notebooks/understandin
 - Extract graphML data from the output files and saves it as files in [analysis/20240812-215728](./analysis/20240812-215728/) directory.
 - Explain the content and relationship of the output files.
 
-### Visualizing the Graph
+### Visualizing the graph
 
 Please follow the [visualizing-graphrag-output.ipynb](./notebooks/visualizing-graphrag-output.ipynb) notebook to visualize the graph. The notebook provides step-by-step instructions and code cells to:
 
@@ -164,25 +175,12 @@ GRAPHRAG_EMBEDDING_MODEL=
 GRAPHRAG_EMBEDDING_DEPLOYMENT=
 ```
 
-### Local and Global Search
-Please follow the [visualizing-graphrag-output.ipynb](./notebooks/visualizing-graphrag-output.ipynb) notebook to perform Local Search Queries.   
-Refer to the section
-- Run local search on sample queries
+### Local and global search
+Please follow the [visualizing-graphrag-output.ipynb](./notebooks/visualizing-graphrag-output.ipynb) notebook to perform Local Search queries. Refer to the section titled 'Run local search on sample queries'.
 
-Please follow the [global_search.ipynb](./notebooks/global_search.ipynb) notebook to perform Global Search Queries.  
-Refer to the section
-- Run global search on sample queries
+Please follow the [global_search.ipynb](./notebooks/global_search.ipynb) notebook to perform Global Search queries. Refer to the section titled 'Run global search on sample queries'.
 
-
-## Troubleshooting
- 
-## Dev Container failing to launch
-The dev container creation might fail for MAC users using M1/M2/M3 chip. This is due to a package dependency which is not resolving in ARM based chips. To resolve this issue:
-Make sure that you have the following setting enabled in Docker desktop:
-
-  ![troubleshooting](./images/troubleshooting.png)
-
-## References:
+## References
 
 - [Project GraphRAG](https://www.microsoft.com/en-us/research/project/graphrag/)
 - [Microsoft GraphRAG Documentation](https://microsoft.github.io/graphrag/)
@@ -193,6 +191,7 @@ Make sure that you have the following setting enabled in Docker desktop:
 
 - The developers of the Python libraries used for graph creation and visualization.
 - The developers of the Microsoft's `graphrag` library.
+- [Project Gutenburg](https://www.gutenberg.org) for the dataset.
 
 ## License
 
