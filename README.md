@@ -22,9 +22,30 @@ If you don't want to run the indexing process, please move to the next section t
    git clone https://github.com/promisinganuj/graphrag-microhack.git
    ```
 
-1. Open the project inside the vscode dev container. For that open the command palette (`Ctrl+Shift+P`) and search for `Dev Containers: Open Folder in Container...`. Select the root folder and confirm.
+2. You have 2 options to run this. Either via Dev Containers or within local virtual environment
 
-2. Choose a root directory called `sample` (or anything else), and create an `input` folder within it.
+   - Dev Container Approach:  
+   Open the project inside the vscode dev container. For that open the command palette (`Ctrl+Shift+P`) and search for `Dev Containers: Open Folder in Container...`. Select the root folder and confirm.  
+      
+   - Virtual environment Approach:  
+     - Within vscode terminal, go to the root directory of this repo.     
+     - Create a virtual environment, activate it and install all necessary libraries
+       ```python
+       # step 1: (Create virtual environment)
+       python -m venv .venv       
+
+       # step 2: (Activate virtual environment)
+
+         # in linux/mac environments
+         source .venv/bin/activate  
+
+         # in Windows
+         .venv\Scripts\activate       
+
+       # step 3: (Install required python libraries)
+       pip install -r requirements.txt    
+       ```
+3. Choose a root directory called `sample` (or anything else), and create an `input` folder within it.
 
    ```bash
    mkdir -p ./sample/input
@@ -32,7 +53,7 @@ If you don't want to run the indexing process, please move to the next section t
 
    This will install the required packages for running the indexing process.
 
-3. For running out the indexation process, you can use any dataset of your choice. We have provided the following dataset in this repo:
+4. For running out the indexation process, you can use any dataset of your choice. We have provided the following dataset in this repo:
    - [datasets/books/a-christmas-carol.txt](./datasets/books/a-christmas-carol.txt) - A copy of "A Christmas Carol" by Charles Dickens from [Project Gutenburg](https://www.gutenberg.org/cache/epub/24022/pg24022.txt).
 
    Copy the `a-christmas-carol.txt` file to the `./sample` directory by using the following command:
@@ -41,13 +62,13 @@ If you don't want to run the indexing process, please move to the next section t
    cp ./datasets/books/a-christmas-carol.txt ./sample/input/
    ```
 
-4. Initialize graphrag by running the following command:
+5. Initialize graphrag by running the following command:
 
    ```bash
    python -m graphrag.index --init --root ./sample
    ```
 
-5. Setup workspace variables
+6. Setup workspace variables
 
    This will create two files: .env and settings.yaml in the ./sample directory.
 
@@ -71,7 +92,7 @@ If you don't want to run the indexing process, please move to the next section t
 
    Please follow the [documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/create-resource?pivots=web-portal) for more information on how to set up the Azure OpenAI Service resource and deploy models.
 
-6. Run the Indexing pipeline
+7. Run the Indexing pipeline
 
    ```bash
    python -m graphrag.index --root ./sample
@@ -141,6 +162,16 @@ GRAPHRAG_LLM_DEPLOYMENT=
 GRAPHRAG_EMBEDDING_MODEL=
 GRAPHRAG_EMBEDDING_DEPLOYMENT=
 ```
+
+### Local and Global Search
+Please follow the [visualizing-graphrag-output.ipynb](./notebooks/visualizing-graphrag-output.ipynb) notebook to perform Local Search Queries.   
+Refer to the section
+- Run local search on sample queries
+
+Please follow the [global_search.ipynb](./notebooks/global_search.ipynb) notebook to perform Global Search Queries.  
+Refer to the section
+- Run global search on sample queries
+
 
 ## References:
 
