@@ -107,6 +107,14 @@ If you don't want to run the indexing process, please move to the next section t
 
    Please follow the [documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/create-resource?pivots=web-portal) for more information on how to set up the Azure OpenAI Service resource and deploy models.
 
+   __Others__
+
+   ```yaml
+   claim_extraction:
+     ...
+     enabled: true # This is disabled by default and have to be enabled for `create_final_covariates` file to get created
+   ```
+
 1. Run the Indexing pipeline
 
    ```bash
